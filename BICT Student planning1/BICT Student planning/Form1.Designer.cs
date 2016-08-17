@@ -32,8 +32,8 @@
             this.pbxLoginLogo = new System.Windows.Forms.PictureBox();
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxUserName = new System.Windows.Forms.TextBox();
+            this.tbxPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblConnectionStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).BeginInit();
@@ -67,20 +67,20 @@
             this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Password";
             // 
-            // textBox1
+            // tbxUserName
             // 
-            this.textBox1.Location = new System.Drawing.Point(478, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.tbxUserName.Location = new System.Drawing.Point(478, 64);
+            this.tbxUserName.Name = "tbxUserName";
+            this.tbxUserName.Size = new System.Drawing.Size(100, 20);
+            this.tbxUserName.TabIndex = 3;
             // 
-            // textBox2
+            // tbxPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(478, 103);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
+            this.tbxPassword.Location = new System.Drawing.Point(478, 103);
+            this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.PasswordChar = '*';
+            this.tbxPassword.Size = new System.Drawing.Size(100, 20);
+            this.tbxPassword.TabIndex = 4;
             // 
             // btnLogin
             // 
@@ -108,8 +108,8 @@
             this.ClientSize = new System.Drawing.Size(637, 308);
             this.Controls.Add(this.lblConnectionStatus);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbxPassword);
+            this.Controls.Add(this.tbxUserName);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.pbxLoginLogo);
@@ -127,8 +127,8 @@
         private System.Windows.Forms.PictureBox pbxLoginLogo;
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxUserName;
+        private System.Windows.Forms.TextBox tbxPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblConnectionStatus;
     }
