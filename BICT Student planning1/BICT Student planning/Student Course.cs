@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace BICT_Student_planning
 {
-    public partial class FrmBICTLogin : Form
+    public partial class Student_Course : Form
     {
-        public FrmBICTLogin()
+        public Student_Course()
         {
             InitializeComponent();
         }
+
     }
-}
+    }

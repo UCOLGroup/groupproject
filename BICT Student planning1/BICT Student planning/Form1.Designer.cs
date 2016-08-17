@@ -78,6 +78,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(478, 103);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 4;
             // 
@@ -89,6 +90,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblConnectionStatus
             // 
@@ -112,7 +114,8 @@
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.pbxLoginLogo);
             this.Name = "FrmBICTLogin";
-            this.Text = "BICT Login";
+            this.Text = "BICT_Login";
+            this.Load += new System.EventHandler(this.FrmBICTLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLoginLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
