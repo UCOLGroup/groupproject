@@ -12,7 +12,7 @@ using System.Data.OleDb;
 namespace BICT_Student_planning
 {
     public partial class FrmBICTLogin : Form
-    {
+    {   //Creating a variable called connection 
         private OleDbConnection connection = new OleDbConnection();
         public FrmBICTLogin()
         {
@@ -29,13 +29,13 @@ namespace BICT_Student_planning
                 //Open connection to the database
                 connection.Open();
                 //Setting the lblConnectionStatus label to connection successfull to show the connection is complete
-                lblConnectionStatus.Text = "Connection Successfull";
+                lblConnectionStatus.Text = "Connection Successful";
                 //closing the connection
                 connection.Close();
             }
             catch (Exception Ex)
             {//Message box throws the error if not connected
-                MessageBox.Show("Error" + Ex);
+                MessageBox.Show("Connection Error" + Ex);
             }
 
         }
@@ -43,21 +43,26 @@ namespace BICT_Student_planning
         private void btnLogin_Click(object sender, EventArgs e)
         {
             connection.Open();
+            //Creating a variable called command 
             OleDbCommand command = new OleDbCommand();
             command.Connection = connection;
             //Selecting the userinput from the login form and matching it with the database so that it can compare the username and password
             command.CommandText = "Select * from students where user_name='"+tbxUserName.Text+"' and password='"+tbxPassword.Text+"';";
             // Read out of the database
             OleDbDataReader reader = command.ExecuteReader();
+            //count is Zero
             int count = 0;
             while (reader.Read())
             {
                 count = count + 1;
             }
+
             if (count == 1)
-            {
-                MessageBox.Show("login successfull");
+            {   // Messagebox will show if the was login successful
+                MessageBox.Show("Login Successful");
+                //Close the connection to the database
                 connection.Close();
+
                 connection.Dispose();
                 //this hides the first login form 
                 this.Hide();
@@ -65,16 +70,19 @@ namespace BICT_Student_planning
                 //this shows the Student COurse form(i.e the second form)
                 SC.ShowDialog();
         }
+            //if the username and password match another user in the database display this message
             else if (count > 1) 
             {
+                  
                 MessageBox.Show("Duplicate username or password");
             }
-            
+            //if the wrong password is entered Display this message "Wrong Username or Password"
             else
             {
                 MessageBox.Show("Wrong Username or Password");
             }
-connection.Close();
+            // close the connection to the access database
+        connection.Close();
         }
     }
 }
