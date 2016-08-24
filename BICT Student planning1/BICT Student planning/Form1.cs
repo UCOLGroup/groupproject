@@ -10,10 +10,15 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 
 namespace BICT_Student_planning
-{
+{/// <summary>
+/// this is the main form 
+/// </summary>
     public partial class FrmBICTLogin : Form
     {   //Creating a variable called connection 
         private OleDbConnection connection = new OleDbConnection();
+
+        public string UsernameLabel;
+
         public FrmBICTLogin()
         {
             InitializeComponent();
@@ -21,7 +26,11 @@ namespace BICT_Student_planning
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Student_Papers.accdb;
             Persist Security Info = False;";
         }
-
+        /// <summary>
+        /// Once the form is Loaded the coonection will be verified by the label on the form showing a successful message
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmBICTLogin_Load(object sender, EventArgs e)
         {
             try
@@ -59,15 +68,20 @@ namespace BICT_Student_planning
 
             if (count == 1)
             {   // Messagebox will show if the was login successful
-                MessageBox.Show("Login Successful");
+               // MessageBox.Show("Login Successful");
                 //Close the connection to the database
                 connection.Close();
 
                 connection.Dispose();
                 //this hides the first login form 
+                Students student = new Students();
+                student.User_name = tbxUserName.Text;
+
                 this.Hide();
-                Student_Course SC = new Student_Course();
-                //this shows the Student COurse form(i.e the second form)
+
+                
+                Student_Course SC = new Student_Course(student);
+                //this shows the Student course form(i.e the second form)
                 SC.ShowDialog();
         }
             //if the username and password match another user in the database display this message
@@ -80,6 +94,9 @@ namespace BICT_Student_planning
             else
             {
                 MessageBox.Show("Wrong Username or Password");
+                tbxUserName.Text = "";
+                tbxPassword.Text = "";
+                tbxUserName.Focus();
             }
             // close the connection to the access database
         connection.Close();
