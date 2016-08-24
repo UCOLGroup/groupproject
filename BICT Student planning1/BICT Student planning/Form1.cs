@@ -18,7 +18,7 @@ namespace BICT_Student_planning
         {
             InitializeComponent();
             //this is the connection string that connects to the Microsoft access database to the login Form
-            connection.ConnectionString = @"Provider = Microsoft.ACE.OLEDB.12.0; Data Source = H:\groupproject\Database\Student_Papers.accdb;
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Student_Papers.accdb;
             Persist Security Info = False;";
         }
 
@@ -46,7 +46,7 @@ namespace BICT_Student_planning
             OleDbCommand command = new OleDbCommand();
             command.Connection = connection;
             //Selecting the userinput from the login form and matching it with the database so that it can compare the username and password
-            command.CommandText = "Select * from students where first_name='"+tbxUserName.Text+"' and password='"+tbxPassword.Text+"';";
+            command.CommandText = "Select * from students where user_name='"+tbxUserName.Text+"' and password='"+tbxPassword.Text+"';";
             // Read out of the database
             OleDbDataReader reader = command.ExecuteReader();
             int count = 0;
