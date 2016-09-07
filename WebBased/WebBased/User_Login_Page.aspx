@@ -7,6 +7,13 @@
 
         <script src="Scripts/jquery-1.9.1.js"> </script>
     <script src="Scripts/jquery-migrate-1.2.1.min.js">  </script>
+    <script type = "text/javascript" >
+function disableBackButton()
+{
+window.history.forward();
+}
+setTimeout("disableBackButton()", 0);
+</script>
 
     <title></title>
     <style type="text/css">
@@ -18,8 +25,9 @@
             width: 163px;
             text-align: center;
             font-weight: bold;
-            color: #0000FF;
+            color: #546BA8;
             font-size: large;
+            font-family:Arial, Helvetica, sans-serif;
         }
         .auto-style3 {
             width: 275px;
@@ -34,8 +42,9 @@
             height: 46px;
             text-align: center;
             font-weight: bold;
-            color: #0000FF;
+            color: #546BA8;
             font-size: large;
+             font-family:Arial, Helvetica, sans-serif;
         }
         .auto-style8 {
             width: 275px;
@@ -49,7 +58,6 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    <h1 style="margin-left: 720px">User Login Page</h1>
         <p style="height: 315px; width: 803px">
             <img alt="Image of ucol logo" class="auto-style4" <img src="Images/ucol.png" /> </p>
 
@@ -59,7 +67,7 @@
             <tr>
                 <td class="auto-style2">User Name</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="234px"></asp:TextBox>
+                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="234px" ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please type in a Username" ControlToValidate="tbxUsername" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -76,7 +84,7 @@
         <br />
         <br />
         <br />
-        <asp:Button ID="btnRegister" runat="server" Height="39px" OnClick="btnRegister_Click" style="margin-left: 813px" Text="Register" Width="260px" />
+        <asp:Button ID="btnRegister" runat="server" Height="39px" OnClick="btnRegister_Click" style="margin-left: 813px" Text="Login" Width="260px" />
             </div>
     </form>
 </body>

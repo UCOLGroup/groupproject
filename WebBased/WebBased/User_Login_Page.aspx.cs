@@ -5,13 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OleDb;
+using WebBased.Models;
 
 namespace WebBased
 {
     public partial class User_Login_Page : System.Web.UI.Page
     {
+        public Student student = new Student();
+
         private OleDbConnection connection = new OleDbConnection();
-        public string UsernameLabel;
+        public static string UsernameLabel;
      
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,8 +53,9 @@ namespace WebBased
                     //this hides the first login form 
                     // Students student = new Students();
                     //student.User_name = tbxUsername.Text;
-
+                    UsernameLabel = tbxUsername.Text;
                     Response.Redirect("Students_Course.aspx");
+
 
 
                 //Student_Course SC = new Student_Course(student);
