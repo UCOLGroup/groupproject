@@ -20,9 +20,9 @@ namespace WebBased
                 //Attribute to hide column in phone.
 
 
-              GridView1.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
-              GridView1.HeaderRow.Cells[5].Attributes["data-hide"] = "phone";
-              GridView1.HeaderRow.Cells[6].Attributes["data-hide"] = "phone";
+             // GridView1.HeaderRow.Cells[3].Attributes["data-hide"] = "phone";
+              //GridView1.HeaderRow.Cells[5].Attributes["data-hide"] = "phone";
+              //GridView1.HeaderRow.Cells[6].Attributes["data-hide"] = "phone";
              // GridView1.HeaderRow.Cells[7].Attributes["data-hide"] = "phone";
              // GridView1.HeaderRow.Cells[8].Attributes["data-hide"] = "phone";
 

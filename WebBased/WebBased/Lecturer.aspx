@@ -7,6 +7,7 @@
             Lecturer ID:
             <asp:TextBox ID="TextBox1" runat="server" Width="28px">1</asp:TextBox>
             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+            &nbsp;
             <br />
             <br />
         </div>

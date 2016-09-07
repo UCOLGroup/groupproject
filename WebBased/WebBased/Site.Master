@@ -46,9 +46,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/" style="width:200px;">UCOL <span style="font-size: small;"> Paper Details</span></a>&nbsp; - - -
                 </div>
-                <div class="navbar-collapse collapse">
+<%--                <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
@@ -70,7 +70,7 @@
                             </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
-                </div>
+                </div>--%>
             </div>
         </div>
         <div class="container body-content">
@@ -78,7 +78,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - UCOL - Student Planner</p>
             </footer>
         </div>
     </form>
