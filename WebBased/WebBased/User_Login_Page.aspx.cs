@@ -54,6 +54,7 @@ namespace WebBased
                     // Students student = new Students();
                     //student.User_name = tbxUsername.Text;
                     UsernameLabel = tbxUsername.Text;
+                    Session["USER_ID"] = tbxUsername.Text;
                     Response.Redirect("Students_Course.aspx");
 
 
@@ -106,6 +107,7 @@ namespace WebBased
                     connection.Close();
 
                     connection.Dispose();
+                    Session["USER_ID"] = tbxUsername.Text;
                     Response.Redirect("Lecturer.aspx");
                 }
 
