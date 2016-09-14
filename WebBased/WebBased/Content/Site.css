@@ -36,3 +36,8 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+.header {
+    background-color: darkblue;
+    min-height: 300px;
+}

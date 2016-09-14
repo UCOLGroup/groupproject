@@ -1,15 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Lecturer.aspx.cs" Inherits="WebBased.Lecturer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style type="text/css">
+        #btnLogout{
+            //float:right;
+        }
+    </style>
+    <nav class="navbar navbar-default" style="background-color: #193980;" >
+
+        <div style="padding:20px;"><asp:Image ID="logo" runat="server" Width="134px" Height="70px" ImageUrl="~/Images/ucol-logo.png" />
+            
+        </div>
+
+    </nav>
+
 
     <div class="container">
+        
         <div>
-            <br />
-            &nbsp;<asp:TextBox ID="TextBox1" runat="server" Width="28px" Visible="False">1</asp:TextBox>
-            <asp:Label ID="lblWelcome" runat="server" Text="Welcome"></asp:Label>
+        <div style="float:left;">
+            <br /> <br />
+            &nbsp;<asp:Label ID="lblWelcome" runat="server" Text="Welcome" Font-Size="Large"></asp:Label>
+            
             &nbsp;
+            <asp:TextBox ID="TextBox1" runat="server" Width="28px" Visible="False">1</asp:TextBox>
             <br />
             <br />
         </div>
+
+        <div style="float:right; position:relative; top: 40px;"><asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" /></div>
+        </div>
+
         <div>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Height="185px" CssClass="footable" AllowSorting="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
                 <Columns>

@@ -80,5 +80,12 @@ namespace WebBased
 
 
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("user_login_page.aspx");
+        }
     }
 }

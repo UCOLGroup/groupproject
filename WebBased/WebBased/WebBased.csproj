@@ -214,6 +214,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\ucol-logo.png" />
+    <Content Include="Images\ucol-logo.svg" />
     <Content Include="Images\ucol.png" />
     <Content Include="Lecturer.aspx" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />

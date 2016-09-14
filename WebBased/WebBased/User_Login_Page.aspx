@@ -67,20 +67,20 @@ setTimeout("disableBackButton()", 0);
             <tr>
                 <td class="auto-style2">User Name</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="234px" ></asp:TextBox>
+                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="234px" >12345</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please type in a Username" ControlToValidate="tbxUsername" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style7">Password</td>
                 <td class="auto-style8">
-                    <asp:TextBox ID="tbxPassword" runat="server" Height="26px" Width="233px"></asp:TextBox>
+                    <asp:TextBox ID="tbxPassword" runat="server" Height="26px" Width="233px">docsteele1</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please type in a Password" ControlToValidate="tbxPassword" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
         <br />
-            <asp:CheckBox Class="LecturerCheckBox" ID="chkLecturerLogin" Text="Lecturer Login" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
+            <asp:CheckBox Class="LecturerCheckBox" ID="chkLecturerLogin" Text="Lecturer Login" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Checked="True" />
         <br />
         <br />
         <br />
