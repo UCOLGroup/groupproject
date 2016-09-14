@@ -31,16 +31,16 @@
         </div>
 
         <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Height="185px" CssClass="footable" AllowSorting="True" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Height="185px" CssClass="footable" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
                 <Columns>
                     <asp:CommandField ShowEditButton="True" />
                     <asp:BoundField DataField="paper_id" HeaderText="paper_id" InsertVisible="False" ReadOnly="True" SortExpression="paper_id" Visible="False" />
-                    <asp:BoundField DataField="lecturer_id" HeaderText="lecturer_id" SortExpression="lecturer_id" Visible="False" />
                     <asp:BoundField DataField="code" HeaderText="Code" SortExpression="code" />
                     <asp:BoundField DataField="paper_name" HeaderText="Paper Name" SortExpression="paper_name" />
                     <asp:BoundField DataField="category" HeaderText="Category" SortExpression="category" />
                     <asp:BoundField DataField="level" HeaderText="Level" SortExpression="level" />
                     <asp:BoundField DataField="credits" HeaderText="Credits" SortExpression="credits" />
+                    <asp:BoundField DataField="semester" HeaderText="Semester" SortExpression="semester" />
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#333333" />
                 <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
@@ -52,29 +52,29 @@
                 <SortedDescendingCellStyle BackColor="#E5E5E5" />
                 <SortedDescendingHeaderStyle BackColor="#275353" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString3 %>" DeleteCommand="DELETE FROM [papers] WHERE [paper_id] = ?" InsertCommand="INSERT INTO [papers] ([paper_id], [lecturer_id], [code], [paper_name], [category], [level], [credits]) VALUES (?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ConnectionString3.ProviderName %>" SelectCommand="SELECT * FROM [papers] WHERE ([lecturer_id] = ?)" UpdateCommand="UPDATE [papers] SET [lecturer_id] = ?, [code] = ?, [paper_name] = ?, [category] = ?, [level] = ?, [credits] = ? WHERE [paper_id] = ?">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString5 %>" DeleteCommand="DELETE FROM [papers] WHERE [paper_id] = ?" InsertCommand="INSERT INTO [papers] ([paper_id], [code], [paper_name], [category], [level], [credits], [semester]) VALUES (?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ConnectionString5.ProviderName %>" SelectCommand="SELECT [paper_id], [code], [paper_name], [category], [level], [credits], [semester] FROM [papers] WHERE ([lecturer_id] = ?)" UpdateCommand="UPDATE [papers] SET [code] = ?, [paper_name] = ?, [category] = ?, [level] = ?, [credits] = ?, [semester] = ? WHERE [paper_id] = ?">
                 <DeleteParameters>
                     <asp:Parameter Name="paper_id" Type="Int32" />
                 </DeleteParameters>
                 <InsertParameters>
                     <asp:Parameter Name="paper_id" Type="Int32" />
-                    <asp:Parameter Name="lecturer_id" Type="Int32" />
                     <asp:Parameter Name="code" Type="String" />
                     <asp:Parameter Name="paper_name" Type="String" />
                     <asp:Parameter Name="category" Type="String" />
                     <asp:Parameter Name="level" Type="Int32" />
                     <asp:Parameter Name="credits" Type="Int32" />
+                    <asp:Parameter Name="semester" Type="String" />
                 </InsertParameters>
                 <SelectParameters>
                     <asp:ControlParameter ControlID="TextBox1" Name="lecturer_id" PropertyName="Text" Type="Int32" />
                 </SelectParameters>
                 <UpdateParameters>
-                    <asp:Parameter Name="lecturer_id" Type="Int32" />
                     <asp:Parameter Name="code" Type="String" />
                     <asp:Parameter Name="paper_name" Type="String" />
                     <asp:Parameter Name="category" Type="String" />
                     <asp:Parameter Name="level" Type="Int32" />
                     <asp:Parameter Name="credits" Type="Int32" />
+                    <asp:Parameter Name="semester" Type="String" />
                     <asp:Parameter Name="paper_id" Type="Int32" />
                 </UpdateParameters>
             </asp:SqlDataSource>
@@ -82,12 +82,13 @@
             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="footable" DataKeyNames="paper_id" DataSourceID="SqlDataSource2">
                 <Columns>
                     <asp:CommandField ShowEditButton="True" />
-                    <asp:BoundField DataField="paper_id" HeaderText="Paper Id" InsertVisible="False" ReadOnly="True" SortExpression="paper_id" Visible="False" />
+                    <asp:BoundField DataField="paper_id" HeaderText="paper_id" InsertVisible="False" ReadOnly="True" SortExpression="paper_id" Visible="False" />
                     <asp:BoundField DataField="code" HeaderText="Code" SortExpression="code" />
                     <asp:BoundField DataField="paper_name" HeaderText="Paper Name" SortExpression="paper_name" />
                     <asp:BoundField DataField="category" HeaderText="Category" SortExpression="category" />
                     <asp:BoundField DataField="level" HeaderText="Level" SortExpression="level" />
                     <asp:BoundField DataField="credits" HeaderText="Credits" SortExpression="credits" />
+                    <asp:BoundField DataField="semester" HeaderText="Semester" SortExpression="semester" />
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
@@ -99,7 +100,7 @@
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString4 %>" DeleteCommand="DELETE FROM [papers] WHERE [paper_id] = ?" InsertCommand="INSERT INTO [papers] ([paper_id], [code], [paper_name], [category], [level], [credits]) VALUES (?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ConnectionString4.ProviderName %>" SelectCommand="SELECT [paper_id], [code], [paper_name], [category], [level], [credits] FROM [papers]" UpdateCommand="UPDATE [papers] SET [code] = ?, [paper_name] = ?, [category] = ?, [level] = ?, [credits] = ? WHERE [paper_id] = ?">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString6 %>" DeleteCommand="DELETE FROM [papers] WHERE [paper_id] = ?" InsertCommand="INSERT INTO [papers] ([paper_id], [code], [paper_name], [category], [level], [credits], [semester]) VALUES (?, ?, ?, ?, ?, ?, ?)" ProviderName="<%$ ConnectionStrings:ConnectionString6.ProviderName %>" SelectCommand="SELECT [paper_id], [code], [paper_name], [category], [level], [credits], [semester] FROM [papers]" UpdateCommand="UPDATE [papers] SET [code] = ?, [paper_name] = ?, [category] = ?, [level] = ?, [credits] = ?, [semester] = ? WHERE [paper_id] = ?">
                 <DeleteParameters>
                     <asp:Parameter Name="paper_id" Type="Int32" />
                 </DeleteParameters>
@@ -110,6 +111,7 @@
                     <asp:Parameter Name="category" Type="String" />
                     <asp:Parameter Name="level" Type="Int32" />
                     <asp:Parameter Name="credits" Type="Int32" />
+                    <asp:Parameter Name="semester" Type="String" />
                 </InsertParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="code" Type="String" />
@@ -117,6 +119,7 @@
                     <asp:Parameter Name="category" Type="String" />
                     <asp:Parameter Name="level" Type="Int32" />
                     <asp:Parameter Name="credits" Type="Int32" />
+                    <asp:Parameter Name="semester" Type="String" />
                     <asp:Parameter Name="paper_id" Type="Int32" />
                 </UpdateParameters>
             </asp:SqlDataSource>
