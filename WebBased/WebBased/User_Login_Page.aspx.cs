@@ -24,7 +24,7 @@ namespace WebBased
        
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=H:\groupproject\WebBased\WebBased\App_Data\Student_Papers.accdb;
+            connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Student_Papers.accdb;
             Persist Security Info = False;";
             if (chkLecturerLogin.Checked == false) { 
                 //Response.Write("Successful Registration");
