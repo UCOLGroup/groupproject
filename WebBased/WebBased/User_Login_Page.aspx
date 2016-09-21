@@ -15,26 +15,28 @@ window.history.forward();
 setTimeout("disableBackButton()", 0);
 </script>
 
-    <title></title>
+    <title>Login</title>
     <style type="text/css">
-        .auto-style1 {
-            width: 37%;
-            margin-left: 633px;
-        }
+        
         .auto-style2 {
-            width: 163px;
-            text-align: center;
             font-weight: bold;
-            color: #546BA8;
+            color: #FFFFFF;
             font-size: large;
             font-family:Arial, Helvetica, sans-serif;
         }
+
         .auto-style3 {
-            width: 275px;
+            position: relative;
+            top: 15px;
         }
+        /*
+        .auto-style3 {
+            padding-top: 35px;
+        }
+        
         .auto-style4 {
-            width: 693px;
-            height: 341px;
+            width: 151px;
+            height: 86px;
             margin-left: 560px;
         }
         .auto-style7 {
@@ -42,7 +44,7 @@ setTimeout("disableBackButton()", 0);
             height: 46px;
             text-align: center;
             font-weight: bold;
-            color: #546BA8;
+            color: #FFFFFF;
             font-size: large;
              font-family:Arial, Helvetica, sans-serif;
         }
@@ -50,31 +52,42 @@ setTimeout("disableBackButton()", 0);
             width: 275px;
             height: 46px;
         }
-        .LecturerCheckBox{
-            margin-left:625px;
+            }*/
+        .LecturerCheckBox {
+            font-weight: bold;
+            color: #FFFFFF;
+            font-size: medium;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        
+        /*style="margin-left: 813px"*/
+        body{
+            margin: 10px auto;
+            width: 260px;
+            background-color:#193980;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <p style="height: 315px; width: 803px">
+        <p style="height: 100px; width: 200px">
             <img alt="Image of ucol logo" class="auto-style4" <img src="Images/ucol.png" /> </p>
 
     </div>
         <div>
         <table class="auto-style1">
             <tr>
-                <td class="auto-style2">User Name</td>
+                <td class="auto-style2">UserName:</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="234px" >12345</asp:TextBox>
+                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="155px" >12345</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please type in a Username" ControlToValidate="tbxUsername" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style7">Password</td>
-                <td class="auto-style8">
-                    <asp:TextBox ID="tbxPassword" runat="server" Height="26px" Width="233px">docsteele1</asp:TextBox>
+                <td class="auto-style2">Password:</td>
+                <td class="auto-style3">
+                    <asp:TextBox ID="tbxPassword" runat="server" Height="26px" Width="155px">docsteele1</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please type in a Password" ControlToValidate="tbxPassword" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -84,7 +97,7 @@ setTimeout("disableBackButton()", 0);
         <br />
         <br />
         <br />
-        <asp:Button ID="btnRegister" runat="server" Height="39px" OnClick="btnRegister_Click" style="margin-left: 813px" Text="Login" Width="260px" />
+        <asp:Button ID="btnRegister" runat="server" Height="39px" OnClick="btnRegister_Click"  Text="Login" Width="260px" />
             </div>
     </form>
 </body>
