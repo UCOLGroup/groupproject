@@ -13,16 +13,22 @@ namespace WebBased
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            // Checks to see if the Session ID has been passed from login page
             if (Session["USER_ID"] != null)
             {
 
+                // Using ADO.NET a OLE connection object is created
                 OleDbConnection connection = new OleDbConnection();
 
+                //The connection string is added to the connection object and the string is dynamic, so if we move the 
                 connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Student_Papers.accdb;
             Persist Security Info = False;";
 
+                // Opening up the connection to the database (student_papers)
                 connection.Open();
 
+                // Create a new OLE Command object.  THis will store a Select statement
                 OleDbCommand command = new OleDbCommand();
 
                 command.Connection = connection;
