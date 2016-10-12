@@ -14,22 +14,42 @@ namespace WebBased
     {
         private OleDbConnection connection = new OleDbConnection();
 
+        /// <summary>
+        /// Retreive papers that the student has completed
+        /// </summary>
+        /// <param name="studentId">Add the student ID of the paper</param>
+        /// <returns></returns>
         protected DataSet GetPapersCompleted(string studentId)
         {
+            // Using ADO.NET a OLE connection object is created
             connection.Open();
+
+            // Create a new OLE Command object.  THis will store a Select statement
             OleDbCommand command = new OleDbCommand();
+
+            // Adding the connection object to the command object
             command.Connection = connection;
-            //Selecting the userinput from the login form and matching it with the database so that it can compare the username and password
+
+            // Selecting all the papers that a student has passed (based on the student id parsed in)
             string query = "SELECT papers.category, papers.[level], papers.credits, papers.semester, papers.paper_name AS Expr1, papers.code, papers.lecturer_id, papers.paper_id, papers.* FROM (student_papers INNER JOIN papers ON student_papers.paper_id = papers.paper_id) WHERE student_papers.student_id = " + studentId;
+
+            // Add the query to the CommandText object
             command.CommandText = query;
+
+            // Set up an adapter object that holds the query and connection objects (The adapter is communicates between the database and the dataset)
             OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+
+            // Create a dataset and Fill the dataset with the student_papers table data 
             DataSet studentPapers = new DataSet();
             adapter.Fill(studentPapers, "student_papers");
 
+            // Close connection to database
             connection.Close();
 
+            // Return the dataset that holds all the papers that a student has completed
             return studentPapers;
         }
+
 
         protected string GetIdFromDB(string userId)
         {
