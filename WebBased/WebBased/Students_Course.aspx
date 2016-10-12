@@ -17,7 +17,7 @@
 
     <div>
         <asp:Label ID="lblUserNameFromLoginForm" runat="server" Text=""></asp:Label>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Visible="False">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Visible="False" Width="605px">
             <Columns>
                 <asp:BoundField DataField="paper_id" HeaderText="paper_id" InsertVisible="False" ReadOnly="True" SortExpression="paper_id" />
                 <asp:BoundField DataField="lecturer_id" HeaderText="lecturer_id" SortExpression="lecturer_id" />
@@ -27,6 +27,7 @@
                 <asp:BoundField DataField="level" HeaderText="level" SortExpression="level" />
                 <asp:BoundField DataField="credits" HeaderText="credits" SortExpression="credits" />
                 <asp:BoundField DataField="semester" HeaderText="semester" SortExpression="semester" />
+                <asp:BoundField DataField="compulsory" HeaderText="compulsory" SortExpression="compulsory" />
             </Columns>
         </asp:GridView>
 

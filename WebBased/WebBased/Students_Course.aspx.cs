@@ -142,12 +142,19 @@ namespace WebBased
 
                     if (!paperIsComplete)
                     {
-                        Literal1.Text += "<button class='paper s_dev_com'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                        Literal1.Text += "<button class='paper s_dev_com'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
                     }
                     else
                     {
-                        Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                        Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
                     }
+
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
 
 
 
@@ -166,9 +173,15 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Information Management" && GridView1.Rows[i].Cells[5].Text == "5")
                 {
-                    Literal1.Text += "<button class='paper info_man'" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
 
-                    //creating a dynamic checkbox
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
+
 
                 }
 
@@ -182,7 +195,15 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Technology" && GridView1.Rows[i].Cells[5].Text == "5")
                 {
-                    Literal1.Text += "<button class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                    Literal1.Text += "<button class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+
+
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
 
                 }
 
@@ -201,8 +222,14 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Software Development" && GridView1.Rows[i].Cells[5].Text == "6")
                 {
-                    Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                    Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
 
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
                 }
 
             }
@@ -214,7 +241,14 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Information Management" && GridView1.Rows[i].Cells[5].Text == "6")
                 {
-                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
 
                 }
 
@@ -227,7 +261,14 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Technology" && GridView1.Rows[i].Cells[5].Text == "6")
                 {
-                    Literal1.Text += "<button class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                    Literal1.Text += "<button class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
 
                 }
 
@@ -247,7 +288,14 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Software Development" && GridView1.Rows[i].Cells[5].Text == "7")
                 {
-                    Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                    Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
 
                 }
 
@@ -260,7 +308,14 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Information Management" && GridView1.Rows[i].Cells[5].Text == "7")
                 {
-                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "</button>";
+                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
 
                 }
 
@@ -273,10 +328,14 @@ namespace WebBased
             {
                 if (GridView1.Rows[i].Cells[4].Text == "Technology" && GridView1.Rows[i].Cells[5].Text == "7")
                 {
-                    Literal1.Text += "<button id ='" + i + "' class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text + "<br></button>";
+                    Literal1.Text += "<button id ='" + i + "' class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
 
-                    // Adding dynamic checkboxes (testing)
-                    AddCheckboxes(i.ToString());
+                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        Literal1.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    Literal1.Text += "</button>";
 
                 }
 
@@ -305,8 +364,7 @@ namespace WebBased
             chkList1.ID = "Chk" + strCheckboxText;
             chkList1.Font.Name = "Verdana";
             chkList1.Font.Size = 9;
-            chkList1.Attributes.Add("dataAttributeA", "test");
-            chkList1.Attributes["dataAttributeA"] = "hello";
+            //chkList1.Attributes.Add("onclick", "alert('Testing')");
 
             form1.Controls.Add(chkList1);
             form1.Controls.Add(new LiteralControl("<br>"));
