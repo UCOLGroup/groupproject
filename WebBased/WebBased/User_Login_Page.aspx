@@ -29,38 +29,12 @@ setTimeout("disableBackButton()", 0);
             position: relative;
             top: 15px;
         }
-        /*
-        .auto-style3 {
-            padding-top: 35px;
-        }
-        
-        .auto-style4 {
-            width: 151px;
-            height: 86px;
-            margin-left: 560px;
-        }
-        .auto-style7 {
-            width: 163px;
-            height: 46px;
-            text-align: center;
-            font-weight: bold;
-            color: #FFFFFF;
-            font-size: large;
-             font-family:Arial, Helvetica, sans-serif;
-        }
-        .auto-style8 {
-            width: 275px;
-            height: 46px;
-        }
-            }*/
         .LecturerCheckBox {
             font-weight: bold;
             color: #FFFFFF;
             font-size: medium;
             font-family:Arial, Helvetica, sans-serif;
         }
-        
-        /*style="margin-left: 813px"*/
         body{
             margin: 10px auto;
             width: 260px;
@@ -87,7 +61,7 @@ setTimeout("disableBackButton()", 0);
             <tr>
                 <td class="auto-style2">Password:</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="tbxPassword" runat="server" Height="26px" Width="155px">123</asp:TextBox>
+                    <asp:TextBox ID="tbxPassword" runat="server" TextMode="Password" Height="26px" Width="155px">123</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please type in a Password" ControlToValidate="tbxPassword" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>

@@ -5,15 +5,18 @@
             //float:right;
         }
     </style>
+
+    <%--Header Section Of Page--%>
     <nav class="navbar navbar-default" style="background-color: #193980;" >
 
+        <%-- Added UCOL Login --%>
         <div style="padding:20px;"><asp:Image ID="logo" runat="server" Width="134px" Height="70px" ImageUrl="~/Images/ucol-logo.png" />
             
         </div>
 
     </nav>
 
-
+        <%-- Main Container of Page --%>
     <div class="container">
         
         <div>
@@ -22,6 +25,7 @@
             &nbsp;<asp:Label ID="lblWelcome" runat="server" Text="Welcome" Font-Size="Large"></asp:Label>
             
             &nbsp;
+            <%-- Using C#, it pulls logged in user from the database and adds username to textbox --%>
             <asp:TextBox ID="TextBox1" runat="server" Width="28px" Visible="False">1</asp:TextBox>
             <br />
             <br />
@@ -31,6 +35,9 @@
         </div>
 
         <div>
+
+            <%-- The first gridview is used to display papers relvent to the user that is logged in.  The wizard has been used populate data from the database to do this gridview. --%>
+
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Height="185px" CssClass="footable" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
                 <Columns>
                     <asp:CommandField ShowEditButton="True" />
@@ -79,6 +86,8 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
             <br />
+
+            <%-- This gridview has access to all the papers in the database it is only visable if the user has admin rights  --%>
             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" CssClass="footable" DataKeyNames="paper_id" DataSourceID="SqlDataSource2">
                 <Columns>
                     <asp:CommandField ShowEditButton="True" />
