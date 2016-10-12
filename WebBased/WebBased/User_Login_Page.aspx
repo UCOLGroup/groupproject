@@ -87,13 +87,13 @@ setTimeout("disableBackButton()", 0);
             <tr>
                 <td class="auto-style2">Password:</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="tbxPassword" runat="server" Height="26px" Width="155px">docsteele1</asp:TextBox>
+                    <asp:TextBox ID="tbxPassword" runat="server" Height="26px" Width="155px">123</asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please type in a Password" ControlToValidate="tbxPassword" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
         <br />
-            <asp:CheckBox Class="LecturerCheckBox" ID="chkLecturerLogin" Text="Lecturer Login" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Checked="True" />
+            <asp:CheckBox Class="LecturerCheckBox" ID="chkLecturerLogin" Text="Lecturer Login" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
         <br />
         <br />
         <br />

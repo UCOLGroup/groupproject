@@ -8,8 +8,13 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/Site.css" rel="stylesheet" />
 </head>
-<body>
+<body style="padding-top:0px;">
+
+
+
+
     <form id="form1" runat="server">
+
     <div>
         <asp:Label ID="lblUserNameFromLoginForm" runat="server" Text=""></asp:Label>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Visible="False">
@@ -27,17 +32,38 @@
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString7 %>" ProviderName="<%$ ConnectionStrings:ConnectionString7.ProviderName %>" SelectCommand="SELECT * FROM [papers]"></asp:SqlDataSource>
 
-        <asp:Panel ID="Panel1" runat="server">
+
          
-            <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+            <div class="container"">
+                    <nav>
+
+        <div class="inside_nav">
+            
+            <asp:Image ID="logo" runat="server" Width="134px" Height="70px" ImageUrl="~/Images/ucol-logo.png" />
+            <asp:Label ID="Label1" runat="server" Font-Size="Larger" style="margin-left:20px;" ForeColor="White" Text="Student Course Details"></asp:Label>
+            
+        </div>
+
+    </nav>
+                <div><h3><span class="label label-primary stud_label">Student</span><asp:Label ID="lblName" runat="server" Text="Student Name"></asp:Label><span class="logout"><asp:Button ID="btnLogout" runat="server" Text="Logout" BackColor="#6699FF" ForeColor="White" OnClick="btnLogout_Click" /></span></h3></div>
+         
 
 
-           
-        </asp:Panel>
+                <asp:Panel ID="Panel1" runat="server">
+                    <div class="stud_body" ><asp:Literal ID="Literal1" runat="server"></asp:Literal></div>
+                </asp:Panel>
+            </div>
+
 
     </div>
-    </form>
+
+        <asp:Label ID="lblTester" runat="server" Font-Size="XX-Large" Font-Bold="True"></asp:Label>
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-</body>
+     <script src="Scripts/main.js"></script>   
+        <asp:Panel ID="Panel2" runat="server">
+        </asp:Panel>
+        
+    </form>
+    </body>
 </html>

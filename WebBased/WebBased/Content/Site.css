@@ -1,7 +1,6 @@
 ﻿/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-color: #193980;
 }
 
 /* Wrapping element */
@@ -27,6 +26,91 @@ input[type="select"] {
     max-width: 280px;
 }
 
+nav {
+    background-color: #193980; 
+    margin: 0px;
+}
+
+.inside_nav {
+    padding:20px;
+}
+
+.stud_body {
+    clear:both;
+}
+
+.stud_label{
+    float:left; 
+    margin: 0px 30px 30px 30px;
+}
+
+.logout {
+    float:right; 
+    margin-right: 30px;
+}
+
+.container {
+    padding:0;
+    background-color: #E6ECF5;
+}
+
+.s_dev_com {
+    background-color: aqua; 
+    font-weight: bold;
+    border: 4px solid pink
+}
+
+.s_dev {
+    background-color: aqua;
+}
+
+.info_man {
+    background-color: yellow;
+}
+
+.tech {
+    background-color: red;
+}
+
+
+.year_label {
+    margin-bottom: 10px;
+}
+
+.header {
+    background-color: darkblue;
+    min-height: 300px;
+}
+
+.row{
+    border-top: 5px solid grey; 
+    margin: 30px; 
+    padding: 15px;
+}
+
+
+.paper {
+    margin: 5px;
+    max-width: 110px;
+    min-width: 110px;
+    height: 110px;
+
+/* Found to vertically align*/
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.cat {
+    width: 200px;
+    /*margin-left: 12px;*/
+}
+
+#Chk28 {
+    /*margin-left: 50px;*/
+}
+
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
@@ -35,9 +119,14 @@ input[type="select"] {
     .body-content {
         padding: 0;
     }
+
 }
 
-.header {
-    background-color: darkblue;
-    min-height: 300px;
+@media screen and (max-width: 768px) {
+    
+    #logo {
+        display:block;
+    }
+
 }
+
