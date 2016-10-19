@@ -21,7 +21,7 @@
 
         <%-- Added a gridview that is hidden on the page to access paper information from database --%>
         <asp:Label ID="lblUserNameFromLoginForm" runat="server" Text=""></asp:Label>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Visible="False" Width="605px">
+        <asp:GridView ID="gdvDatabase" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Visible="False" Width="605px">
             <Columns>
                 <asp:BoundField DataField="paper_id" HeaderText="paper_id" InsertVisible="False" ReadOnly="True" SortExpression="paper_id" />
                 <asp:BoundField DataField="lecturer_id" HeaderText="lecturer_id" SortExpression="lecturer_id" />
@@ -56,7 +56,7 @@
 
                 <%-- Literal1 will be used to gather all information from the backend code and it will hold all the papers and headings --%>
                 <asp:Panel ID="Panel1" runat="server">
-                    <div class="stud_body" ><asp:Literal ID="Literal1" runat="server"></asp:Literal></div>
+                    <div class="stud_body" ><asp:Literal ID="ltlHtml" runat="server"></asp:Literal></div>
                 </asp:Panel>
             </div>
 

@@ -51,8 +51,16 @@ namespace WebBased
         }
 
 
+
+
+        /// <summary>
+        /// This method is used to return a student id (primary key) from the database using a select statement referencing the userId
+        /// </summary>
+        /// <param name="userId">The userId field from the student database</param>
+        /// <returns>It will return a student id string variable based upon the userId</returns>
         protected string GetIdFromDB(string userId)
         {
+            // Creating a connection string that connects to the access database in a dynamic directory (web based/app_data/Student_Papers.accdb)
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Student_Papers.accdb;
             Persist Security Info = False;";
 
@@ -61,22 +69,34 @@ namespace WebBased
             command.Connection = connection;
             //Selecting the userinput from the login form and matching it with the database so that it can compare the username and password
             string query = "Select student_id from students WHERE user_name = '" + userId + "'";
+
+            // adding the query variable to the command object
             command.CommandText = query;
+            // Creating a db readerobject that holds the information from based on the select statement
             OleDbDataReader reader = command.ExecuteReader();
 
+            // Each time that the reader is Read() it will retrieve one row from the database
             reader.Read();
 
-
+            // Create a string variable called studentID and store the student_id field from the reader into that variable
             string studentID = reader["student_id"].ToString();
 
+            // Close the connection and return the student id variable
             connection.Close();
             return studentID;
         }
 
+        /// <summary>
+        /// Retreiving a name from the database based on the userId field
+        /// </summary>
+        /// <param name="userId">The userId field from the student database</param>
+        /// <returns>Returning a student Name (string variable) based on the userId from the database </returns>
         protected string GetNameFromDB(string userId)
         {
+            // Creating a connection string that connects to the access database in a dynamic directory (web based/app_data/Student_Papers.accdb)
             connection.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Student_Papers.accdb;
             Persist Security Info = False;";
+
 
             connection.Open();
             OleDbCommand command = new OleDbCommand();
@@ -84,23 +104,25 @@ namespace WebBased
             //Selecting the userinput from the login form and matching it with the database so that it can compare the username and password
             string query = "Select first_name, last_name from students WHERE user_name = '" + userId + "'";
             command.CommandText = query;
+            // Creating a db readerobject that holds the information from based on the select statement
             OleDbDataReader reader = command.ExecuteReader();
 
+            // Each time that the reader is Read() it will retrieve one row from the database
             reader.Read();
 
-
+            // This will grab the first and last name from the database and concatinate them together, then it will close the connection and return the fullname
             string firstName = reader["first_name"].ToString();
             string lastName = reader["last_name"].ToString();
             string fullName = firstName + " " + lastName;
-
             connection.Close();
             return fullName;
         }
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            // This will prevent users from using the back key to access the login page.
             if (PreviousPage != null)
             {
                 TextBox SourceTextBox =
@@ -111,6 +133,7 @@ namespace WebBased
                 }
             }
 
+            // Check to see if the user_id session is null, if it is redirect back to the login page
             if (Session["USER_ID"] == null)
             {
                 Response.Redirect("User_Login_Page.aspx");
@@ -126,7 +149,7 @@ namespace WebBased
             List<string> papersDone = new List<string>();
             for (int i = 0; i < studentPapers.Tables[0].Rows.Count; i++)
             {
-                lblTester.Text += studentPapers.Tables[0].Rows[i]["paper_name"].ToString() + "<br>"; //testing purposes
+                lblTester.Text += studentPapers.Tables[0].Rows[i][7].ToString() + "<br>"; //testing purposes
             }
 
 
@@ -135,233 +158,242 @@ namespace WebBased
 
 
 
+            // Using the literal control to store all the dynamic html from the database
+            ltlHtml.Text = "";
 
-            Literal1.Text = "";
+            ltlHtml.Text += "<div class='row'>";
+            ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 1</span></div>";
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
 
-
-            Literal1.Text += "<div class='row'>";
-            Literal1.Text += "<div class='year_label'><span class='label label-primary'>Year 1</span></div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
-
-
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            // This will loop through the gridview and select all the level 5 software development papers
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Software Development" && GridView1.Rows[i].Cells[5].Text == "5")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "5")
                 {
                     // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
                     bool paperIsComplete = false;
-
+                    // This will filter the results to see if the paper is completed 
                     for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                     {
-                        if (studentPapers.Tables[0].Rows[z][3].ToString() == GridView1.Rows[i].Cells[3].Text)
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
                         {
+
                             paperIsComplete = true;
                         }
                     }
 
-                    if (!paperIsComplete)
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
                     {
-                        Literal1.Text += "<button class='paper s_dev_com'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert('You have completed this paper');'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     else
                     {
-                        Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper s_dev' >" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+
+                    // If the paper is compulsory, add text below saying that it is compulsory.
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
-
-
-
+                    // close the button that surrounds the paper.
+                    ltlHtml.Text += "</button>";
 
                 }
 
             }
+            ltlHtml.Text += "</div>";
+            // First Year Software Development loop ends here.
+
+            // First Year Information Management. Works in the same way as the commented code above (Level 5 Software Development)
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
 
-            Literal1.Text += "</div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
-
-
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Information Management" && GridView1.Rows[i].Cells[5].Text == "5")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "5")
                 {
-                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                    ltlHtml.Text += "<button class='paper info_man'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
+                    ltlHtml.Text += "<br> <input type='checkbox' name='save' value='1'> Save";
+                    ltlHtml.Text += "</button>";
 
 
                 }
 
             }
+            ltlHtml.Text += "</div>";
+            // First Year Information Management loop ends here.
 
-            Literal1.Text += "</div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
 
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            // First Year Technology Starts Here
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
+
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Technology" && GridView1.Rows[i].Cells[5].Text == "5")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "5")
                 {
-                    Literal1.Text += "<button class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                    ltlHtml.Text += "<button class='paper tech'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
 
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
+                    ltlHtml.Text += "</button>";
 
                 }
 
             }
-            Literal1.Text += "</div>";
-            Literal1.Text += "</div>";
-
+            ltlHtml.Text += "</div>";
+            ltlHtml.Text += "</div>";
+            // First Year Technology Ends Here
             // 1st year end
 
-            Literal1.Text += "<div class='row'>";
-            Literal1.Text += "<div class='year_label'><span class='label label-primary'>Year 2</span></div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
+            // Second Year Loops Start
+            ltlHtml.Text += "<div class='row'>";
+            ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 2</span></div>";
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
 
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Software Development" && GridView1.Rows[i].Cells[5].Text == "6")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                 {
-                    Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                    ltlHtml.Text += "<button class='paper s_dev'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
+                    ltlHtml.Text += "</button>";
                 }
 
             }
-            Literal1.Text += "</div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
+            ltlHtml.Text += "</div>";
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Information Management" && GridView1.Rows[i].Cells[5].Text == "6")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                 {
-                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                    ltlHtml.Text += "<button class='paper info_man'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
-
-                }
-
-            }
-            Literal1.Text += "</div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
-
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-                if (GridView1.Rows[i].Cells[4].Text == "Technology" && GridView1.Rows[i].Cells[5].Text == "6")
-                {
-                    Literal1.Text += "<button class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
-
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        Literal1.Text += "<br><b>Compulsory</b>";
-                    }
-
-                    Literal1.Text += "</button>";
+                    ltlHtml.Text += "</button>";
 
                 }
 
             }
-            Literal1.Text += "</div>";
-            Literal1.Text += "</div>";
+            ltlHtml.Text += "</div>";
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
+
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
+            {
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "6")
+                {
+                    ltlHtml.Text += "<button class='paper tech'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                    {
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
+                    }
+
+                    ltlHtml.Text += "</button>";
+
+                }
+
+            }
+            ltlHtml.Text += "</div>";
+            ltlHtml.Text += "</div>";
 
             // 2nd year end
 
+            // 3rd year loops start
+            ltlHtml.Text += "<div class='row'>";
+            ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 3</span></div>";
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
 
-            Literal1.Text += "<div class='row'>";
-            Literal1.Text += "<div class='year_label'><span class='label label-primary'>Year 3</span></div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
-
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Software Development" && GridView1.Rows[i].Cells[5].Text == "7")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                 {
-                    Literal1.Text += "<button class='paper s_dev'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                    ltlHtml.Text += "<button class='paper s_dev'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
+                    ltlHtml.Text += "</button>";
 
                 }
 
             }
-            Literal1.Text += "</div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
+            ltlHtml.Text += "</div>";
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Information Management" && GridView1.Rows[i].Cells[5].Text == "7")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                 {
-                    Literal1.Text += "<button class='paper info_man'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                    ltlHtml.Text += "<button class='paper info_man'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
+                    ltlHtml.Text += "</button>";
 
                 }
 
             }
-            Literal1.Text += "</div>";
-            Literal1.Text += "<div class='col-md-4'>";
-            Literal1.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
+            ltlHtml.Text += "</div>";
+            ltlHtml.Text += "<div class='col-md-4'>";
+            ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
 
-            for (int i = 0; i < GridView1.Rows.Count; i++)
+            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
-                if (GridView1.Rows[i].Cells[4].Text == "Technology" && GridView1.Rows[i].Cells[5].Text == "7")
+                if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                 {
-                    Literal1.Text += "<button id ='" + i + "' class='paper tech'>" + GridView1.Rows[i].Cells[3].Text + "<br>" + GridView1.Rows[i].Cells[2].Text;
+                    ltlHtml.Text += "<button id ='" + i + "' class='paper tech'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
 
-                    if (GridView1.Rows[i].Cells[8].Text == "Yes")
+                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
-                        Literal1.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
 
-                    Literal1.Text += "</button>";
+                    ltlHtml.Text += "</button>";
 
                 }
 
             }
-            Literal1.Text += "</div>";
-            Literal1.Text += "</div>";
+            ltlHtml.Text += "</div>";
+            ltlHtml.Text += "</div>";
 
         }
 
@@ -373,7 +405,7 @@ namespace WebBased
         }
 
 
-        // Adding dynamic checkboxes
+        // Testing Adding dynamic checkboxes
         CheckBox chkList1;
         private void AddCheckboxes(string strCheckboxText)
         {
