@@ -216,7 +216,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
-
+            // This will loop through the gridview and select all the level 5 Information Management papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "5")
@@ -275,6 +275,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
 
+            // This will loop through the gridview and select all the level 5 Technology papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "5")
@@ -329,6 +330,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
 
+            // This will loop through the gridview and select all the level 6 software development papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "6")
@@ -374,6 +376,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
+            // This will loop through the gridview and select all the level 6 Information Management papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "6")
@@ -419,6 +422,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
 
+            // This will loop through the gridview and select all the level 6 Technology papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "6")
@@ -471,6 +475,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
 
+            // This will loop through the gridview and select all the level 7 software development papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "7")
@@ -516,6 +521,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
+            // This will loop through the gridview and select all the level 7 Information Management papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "7")
@@ -562,6 +568,7 @@ namespace WebBased
             ltlHtml.Text += "<div class='col-md-4'>";
             ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
 
+            // This will loop through the gridview and select all the level 7 Techology papers
             for (int i = 0; i < gdvDatabase.Rows.Count; i++)
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "7")
