@@ -188,7 +188,7 @@ namespace WebBased
                     // If the paper has been completed use a class that will display that paper in bold
                     if (paperIsComplete)
                     {
-                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert('You have completed this paper');'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     else
                     {
