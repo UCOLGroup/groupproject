@@ -139,6 +139,7 @@ namespace WebBased
                 Response.Redirect("User_Login_Page.aspx");
             }
 
+
             // Get the primary key from the database so we can query what papers have been completed
             string studentID = GetIdFromDB(Session["USER_ID"].ToString());
 
@@ -157,466 +158,469 @@ namespace WebBased
             lblName.Text = GetNameFromDB(Session["USER_ID"].ToString());
 
 
-
-            // Using the literal control to store all the dynamic html from the database
-
-
-            ltlHtml.Text += "<div class='row'>";
-            ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 1</span></div>";
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
-
-            // This will loop through the gridview and select all the level 5 software development papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
+            if (lblLoggedIn.Text != "Logged in")
             {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "5")
-                {
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
-                    {
+                // Using the literal control to store all the dynamic html from the database
+                lblLoggedIn.Text = "Logged in";
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                ltlHtml.Text += "<div class='row'>";
+                ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 1</span></div>";
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
+
+                // This will loop through the gridview and select all the level 5 software development papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
+                {
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "5")
+                    {
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
-                    }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-
-                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-
-
-                    // If the paper is compulsory, add text below saying that it is compulsory.
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
-
-                    // close the button that surrounds the paper.
-                    ltlHtml.Text += "</button>";
-
-                }
-
-            }
-            ltlHtml.Text += "</div>";
-            // First Year Software Development loop ends here.
-
-            // First Year Information Management. Works in the same way as the commented code above (Level 5 Software Development)
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
-
-            // This will loop through the gridview and select all the level 5 Information Management papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "5")
-                {
-
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
-                    {
-
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
                         {
 
-                            paperIsComplete = true;
+                            ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                         }
+
+
+                        // If the paper is compulsory, add text below saying that it is compulsory.
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
+
+                        // close the button that surrounds the paper.
+                        ltlHtml.Text += "</button>";
+
                     }
-
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
-             
-
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
-                    //// Testing (Not Implemented)
-                    //else
-                    //{
-                    //    ltlHtml.Text += "<br> <input type='checkbox' name='save' value='1' onclick=Save'alert(\"Not Implemented\">";
-                    //    ltlHtml.Text += "</button>";
-                    //}
-
-
-
 
                 }
+                ltlHtml.Text += "</div>";
+                // First Year Software Development loop ends here.
 
-            }
-            ltlHtml.Text += "</div>";
-            // First Year Information Management loop ends here.
+                // First Year Information Management. Works in the same way as the commented code above (Level 5 Software Development)
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
-
-            // First Year Technology Starts Here
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
-
-            // This will loop through the gridview and select all the level 5 Technology papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "5")
+                // This will loop through the gridview and select all the level 5 Information Management papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
                 {
-                    
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "5")
                     {
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
-                    }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
 
 
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
+                        //// Testing (Not Implemented)
+                        //else
+                        //{
+                        //    ltlHtml.Text += "<br> <input type='checkbox' name='save' value='1' onclick=Save'alert(\"Not Implemented\">";
+                        //    ltlHtml.Text += "</button>";
+                        //}
 
-                    ltlHtml.Text += "</button>";
+
+
+
+                    }
 
                 }
+                ltlHtml.Text += "</div>";
+                // First Year Information Management loop ends here.
 
-            }
-            ltlHtml.Text += "</div>";
-            ltlHtml.Text += "</div>";
-            // First Year Technology Ends Here
-            // 1st year end
 
-            // Second Year Loops Start
-            ltlHtml.Text += "<div class='row'>";
-            ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 2</span></div>";
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
+                // First Year Technology Starts Here
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
 
-            // This will loop through the gridview and select all the level 6 software development papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "6")
+                // This will loop through the gridview and select all the level 5 Technology papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
                 {
-
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "5")
                     {
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
+
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
+
+
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
+
+                        ltlHtml.Text += "</button>";
+
                     }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
-
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
-
-                    ltlHtml.Text += "</button>";
                 }
+                ltlHtml.Text += "</div>";
+                ltlHtml.Text += "</div>";
+                // First Year Technology Ends Here
+                // 1st year end
 
-            }
-            ltlHtml.Text += "</div>";
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
+                // Second Year Loops Start
+                ltlHtml.Text += "<div class='row'>";
+                ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 2</span></div>";
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
 
-            // This will loop through the gridview and select all the level 6 Information Management papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "6")
+                // This will loop through the gridview and select all the level 6 software development papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
                 {
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                     {
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
-                    }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        // Add the paper id value to the button value
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
 
-                        ltlHtml.Text += "<button type='submit' name='paper' value='" + gdvDatabase.Rows[i].Cells[0].Text + "' class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
 
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
+                        ltlHtml.Text += "</button>";
                     }
-
-                    ltlHtml.Text += "</button>";
 
                 }
+                ltlHtml.Text += "</div>";
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
-            }
-            ltlHtml.Text += "</div>";
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
-
-            // This will loop through the gridview and select all the level 6 Technology papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "6")
+                // This will loop through the gridview and select all the level 6 Information Management papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
                 {
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                     {
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
-                    }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            // Add the paper id value to the button value
 
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
+                            ltlHtml.Text += "<button type='submit' name='paper' value='" + gdvDatabase.Rows[i].Cells[0].Text + "' class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
 
-                    ltlHtml.Text += "</button>";
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
+
+                        ltlHtml.Text += "</button>";
+
+                    }
 
                 }
+                ltlHtml.Text += "</div>";
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
 
-            }
-            ltlHtml.Text += "</div>";
-            ltlHtml.Text += "</div>";
-
-            // 2nd year end
-
-            // 3rd year loops start
-            ltlHtml.Text += "<div class='row'>";
-            ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 3</span></div>";
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
-
-            // This will loop through the gridview and select all the level 7 software development papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "7")
+                // This will loop through the gridview and select all the level 6 Technology papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
                 {
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                     {
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
-                    }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
 
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
 
-                    ltlHtml.Text += "</button>";
+                        ltlHtml.Text += "</button>";
+
+                    }
 
                 }
+                ltlHtml.Text += "</div>";
+                ltlHtml.Text += "</div>";
 
-            }
-            ltlHtml.Text += "</div>";
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
+                // 2nd year end
 
-            // This will loop through the gridview and select all the level 7 Information Management papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "7")
+                // 3rd year loops start
+                ltlHtml.Text += "<div class='row'>";
+                ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 3</span></div>";
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-info cat' role='alert'>Software Development</div>";
+
+                // This will loop through the gridview and select all the level 7 software development papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
                 {
-                    
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                     {
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
-                    }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
 
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
 
-                    ltlHtml.Text += "</button>";
+                        ltlHtml.Text += "</button>";
+
+                    }
 
                 }
+                ltlHtml.Text += "</div>";
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-warning cat' role='alert'>Information Management</div>";
 
-            }
-            ltlHtml.Text += "</div>";
-            ltlHtml.Text += "<div class='col-md-4'>";
-            ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
-
-            // This will loop through the gridview and select all the level 7 Techology papers
-            for (int i = 0; i < gdvDatabase.Rows.Count; i++)
-            {
-                if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "7")
+                // This will loop through the gridview and select all the level 7 Information Management papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
                 {
-                    
-
-                    // Start 
-                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
-                    bool paperIsComplete = false;
-                    // This will filter the results to see if the paper is completed 
-                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                     {
 
-                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
-                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
                         {
 
-                            paperIsComplete = true;
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
                         }
-                    }
 
-                    // If the paper has been completed use a class that will display that paper in bold
-                    if (paperIsComplete)
-                    {
-                        ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    else
-                    {
-                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
-                    }
-                    //Finish
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
 
-                    if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
-                    {
-                        ltlHtml.Text += "<br><b>Compulsory</b>";
-                    }
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
 
-                    ltlHtml.Text += "</button>";
+                        ltlHtml.Text += "</button>";
+
+                    }
 
                 }
+                ltlHtml.Text += "</div>";
+                ltlHtml.Text += "<div class='col-md-4'>";
+                ltlHtml.Text += "<div class='alert alert-danger cat' role='alert'>Technology</div>";
+
+                // This will loop through the gridview and select all the level 7 Techology papers
+                for (int i = 0; i < gdvDatabase.Rows.Count; i++)
+                {
+                    if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "7")
+                    {
+
+
+                        // Start 
+                        // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                        bool paperIsComplete = false;
+                        // This will filter the results to see if the paper is completed 
+                        for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                        {
+
+                            // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                            if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                            {
+
+                                paperIsComplete = true;
+                            }
+                        }
+
+                        // If the paper has been completed use a class that will display that paper in bold
+                        if (paperIsComplete)
+                        {
+                            ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        else
+                        {
+                            ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        }
+                        //Finish
+
+                        if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
+                        {
+                            ltlHtml.Text += "<br><b>Compulsory</b>";
+                        }
+
+                        ltlHtml.Text += "</button>";
+
+                    }
+
+                }
+                ltlHtml.Text += "</div>";
+                ltlHtml.Text += "</div>";
 
             }
-            ltlHtml.Text += "</div>";
-            ltlHtml.Text += "</div>";
-
         }
+            
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {

@@ -43,7 +43,8 @@
     <div> 
 
         <%-- Added a gridview that is hidden on the page to access paper information from database --%>
-        <asp:Label ID="lblUserNameFromLoginForm" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblUserNameFromLoginForm" runat="server" Text="">
+            <asp:Label ID="lblLoggedIn" runat="server" Text="Label" Visible="False"></asp:Label></asp:Label>
         <asp:GridView ID="gdvDatabase" runat="server" AutoGenerateColumns="False" DataKeyNames="paper_id" DataSourceID="SqlDataSource1" Visible="False" Width="605px">
             <Columns>
                 <asp:BoundField DataField="paper_id" HeaderText="paper_id" InsertVisible="False" ReadOnly="True" SortExpression="paper_id" />
