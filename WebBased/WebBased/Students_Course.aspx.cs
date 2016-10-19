@@ -192,7 +192,8 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+
+                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
 
 
@@ -244,7 +245,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
              
@@ -253,9 +254,14 @@ namespace WebBased
                     {
                         ltlHtml.Text += "<br><b>Compulsory</b>";
                     }
+                    //// Testing (Not Implemented)
+                    //else
+                    //{
+                    //    ltlHtml.Text += "<br> <input type='checkbox' name='save' value='1' onclick=Save'alert(\"Not Implemented\">";
+                    //    ltlHtml.Text += "</button>";
+                    //}
 
-                    ltlHtml.Text += "<br> <input type='checkbox' name='save' value='1'> Save";
-                    ltlHtml.Text += "</button>";
+
 
 
                 }
@@ -297,7 +303,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 
@@ -351,7 +357,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 
@@ -395,7 +401,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 
@@ -440,7 +446,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 
@@ -492,7 +498,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 
@@ -538,7 +544,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 
@@ -584,7 +590,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 
