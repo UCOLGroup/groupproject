@@ -159,7 +159,7 @@ namespace WebBased
 
 
             // Using the literal control to store all the dynamic html from the database
-            ltlHtml.Text = "";
+
 
             ltlHtml.Text += "<div class='row'>";
             ltlHtml.Text += "<div class='year_label'><span class='label label-primary'>Year 1</span></div>";
@@ -401,7 +401,9 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        // Add the paper id value to the button value
+
+                        ltlHtml.Text += "<button type='submit' name='paper' value='" + gdvDatabase.Rows[i].Cells[0].Text + "' class='paper info_man' onclick='alert(\"Saving Feature - Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
                     //Finish
 

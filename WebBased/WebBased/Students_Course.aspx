@@ -16,6 +16,10 @@
 
     <form id="form1" runat="server">
 
+    <%-- Testing form code, not working. --%>
+    <%--<form id="form2" runat="server" action="http://www.google.com" method="post">--%>
+
+
     <%-- Header Section Starts here --%>
     <div> 
 
