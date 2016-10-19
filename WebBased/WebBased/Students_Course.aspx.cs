@@ -192,7 +192,7 @@ namespace WebBased
                     }
                     else
                     {
-                        ltlHtml.Text += "<button class='paper s_dev' >" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
                     }
 
 
@@ -220,7 +220,34 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "5")
                 {
-                    ltlHtml.Text += "<button class='paper info_man'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
+             
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
@@ -246,7 +273,33 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "5")
                 {
-                    ltlHtml.Text += "<button class='paper tech'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
 
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
@@ -274,7 +327,33 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                 {
-                    ltlHtml.Text += "<button class='paper s_dev'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
@@ -293,7 +372,32 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                 {
-                    ltlHtml.Text += "<button class='paper info_man'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
@@ -313,7 +417,32 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "6")
                 {
-                    ltlHtml.Text += "<button class='paper tech'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
@@ -340,7 +469,32 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Software Development" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                 {
-                    ltlHtml.Text += "<button class='paper s_dev'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper s_dev complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper s_dev' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
@@ -360,7 +514,33 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Information Management" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                 {
-                    ltlHtml.Text += "<button class='paper info_man'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper info_man complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper info_man' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
@@ -380,7 +560,33 @@ namespace WebBased
             {
                 if (gdvDatabase.Rows[i].Cells[4].Text == "Technology" && gdvDatabase.Rows[i].Cells[5].Text == "7")
                 {
-                    ltlHtml.Text += "<button id ='" + i + "' class='paper tech'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    
+
+                    // Start 
+                    // Testing to see if the paper has been completed or not, if it has it will add a border and bold the text.
+                    bool paperIsComplete = false;
+                    // This will filter the results to see if the paper is completed 
+                    for (int z = 0; z < studentPapers.Tables[0].Rows.Count; z++)
+                    {
+
+                        // Will compare values in studentpapers dataset to the gridview making sure that the paper id matches
+                        if (studentPapers.Tables[0].Rows[z][7].ToString() == gdvDatabase.Rows[i].Cells[0].Text)
+                        {
+
+                            paperIsComplete = true;
+                        }
+                    }
+
+                    // If the paper has been completed use a class that will display that paper in bold
+                    if (paperIsComplete)
+                    {
+                        ltlHtml.Text += "<button class='paper tech complete' onclick='alert(\"You have completed this paper\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    else
+                    {
+                        ltlHtml.Text += "<button class='paper tech' onclick='alert(\"Not Implemented\")'>" + gdvDatabase.Rows[i].Cells[3].Text + "<br>" + gdvDatabase.Rows[i].Cells[2].Text;
+                    }
+                    //Finish
 
                     if (gdvDatabase.Rows[i].Cells[8].Text == "Yes")
                     {
