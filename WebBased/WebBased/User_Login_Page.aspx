@@ -16,6 +16,7 @@ setTimeout("disableBackButton()", 0);
 </script>
 
     <title>Login</title>
+    <%-- Styles for the layout of the page --%>
     <style type="text/css">
         
         .auto-style2 {
@@ -43,34 +44,40 @@ setTimeout("disableBackButton()", 0);
     </style>
 </head>
 <body>
+    <%-- The Login form layout --%>
     <form id="form1" runat="server">
+        <%-- Ucol Logo --%>
     <div>
         <p style="height: 100px; width: 200px">
             <img alt="Image of ucol logo" class="auto-style4" <img src="Images/ucol.png" /> </p>
 
     </div>
         <div>
+            <%-- UserName Label and Textbox --%>
         <table class="auto-style1">
             <tr>
                 <td class="auto-style2">UserName:</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="155px" >12345</asp:TextBox>
+                    <asp:TextBox ID="tbxUsername" runat="server" Height="24px" Width="155px" ></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please type in a Username" ControlToValidate="tbxUsername" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
+                <%-- Password Label and Textbox --%>
                 <td class="auto-style2">Password:</td>
                 <td class="auto-style3">
-                    <asp:TextBox ID="tbxPassword" runat="server" TextMode="Password" Height="26px" Width="155px">123</asp:TextBox>
+                    <asp:TextBox ID="tbxPassword" runat="server" TextMode="Password" Height="26px" Width="155px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Please type in a Password" ControlToValidate="tbxPassword" ForeColor="#FF3300"></asp:RequiredFieldValidator>
                 </td>
             </tr>
         </table>
         <br />
+            <%-- Checkbox for Choosing Lecturer --%>
             <asp:CheckBox Class="LecturerCheckBox" ID="chkLecturerLogin" Text="Lecturer Login" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" />
         <br />
         <br />
         <br />
+            <%-- Button  for loging into Lecturer or Student pages --%>
         <asp:Button ID="btnRegister" runat="server" Height="39px" OnClick="btnRegister_Click"  Text="Login" Width="260px" />
             </div>
     </form>
