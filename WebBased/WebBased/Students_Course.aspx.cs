@@ -605,8 +605,10 @@ namespace WebBased
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
+            //clear and Abandon the current users plan of study 
             Session.Clear();
             Session.Abandon();
+            //Go to the Login page
             Response.Redirect("user_login_page.aspx");
         }
 
@@ -615,7 +617,6 @@ namespace WebBased
         CheckBox chkList1;
         private void AddCheckboxes(string strCheckboxText)
         {
-
 
             chkList1 = new CheckBox();
             chkList1.Text = strCheckboxText;
