@@ -217,6 +217,7 @@
     <Content Include="Images\ucol-logo.png" />
     <Content Include="Images\ucol-logo.svg" />
     <Content Include="Images\ucol.png" />
+    <Content Include="Images\UCOL_LOGO_123.PNG" />
     <Content Include="Lecturer.aspx" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />

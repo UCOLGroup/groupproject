@@ -3,16 +3,35 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<%--<head runat="server">--%>
+    <head>
  
     <title></title>
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/Site.css" rel="stylesheet" />
+
+    <script>
+
+        //Snippet found online to print or save the page as a pdf
+        function printpage() {
+            var getpanel = document.getElementById("<%=Panel5.ClientID%>");
+            var MainWindow = window.open('', '', 'height=800,width=800');
+            MainWindow.document.write('<html><head><title>Print Page</title>');
+            MainWindow.document.write('</head><body>');
+            MainWindow.document.write(getpanel.innerHTML);
+            MainWindow.document.write('</body></html>');
+            MainWindow.document.close();
+            setTimeout(function () {
+                MainWindow.print();
+            }, 500);
+            return false;
+        }
+    </script>
 </head>
 <body style="padding-top:0px;">
 
 
-
+    <asp:Panel ID="Panel5" runat="server">
 
     <form id="form1" runat="server">
 
@@ -48,13 +67,13 @@
 
         <div class="inside_nav">
             
-            <asp:Image ID="logo" runat="server" Width="134px" Height="70px" ImageUrl="~/Images/ucol-logo.png" />
+            <asp:Image ID="logo" runat="server" Width="134px" Height="70px" ImageUrl="~/Images/UCOL_LOGO_123.PNG" />
             <asp:Label ID="Label1" runat="server" Font-Size="Larger" style="margin-left:20px;" ForeColor="White" Text="Student Course Details"></asp:Label>
             
         </div>
 
     </nav>
-                <div><h3><span class="label label-primary stud_label">Student</span><asp:Label ID="lblName" runat="server" Text="Student Name"></asp:Label><span class="logout"><asp:Button ID="btnLogout" runat="server" Text="Logout" BackColor="#6699FF" ForeColor="White" OnClick="btnLogout_Click" /></span></h3></div>
+                <div><h3><span class="label label-primary stud_label">Student</span><asp:Label ID="lblName" runat="server" Text="Student Name"></asp:Label><span class="logout"><asp:Button ID="btnLogout" runat="server" Text="Logout" BackColor="#6699FF" ForeColor="White" OnClick="btnLogout_Click" /></span><span class="logout"><asp:Button ID="Button1" runat="server" Text="Save/Print" BackColor="#6699FF" ForeColor="White" OnClientClick="printpage()" /></span></h3></div>
          
 
 
@@ -76,5 +95,7 @@
         </asp:Panel>
         
     </form>
+
+    </asp:Panel>
     </body>
 </html>
